@@ -1,6 +1,7 @@
 const http = require('http');
 const command = 'git log --pretty=format:"%ce;%s;%ad" --date=short';
 const location = 'D:\\development\\cobuilder-gobim';
+const newLineDevider = '\r\n';
 
 let spawn = require('child_process').spawn,
     child;
@@ -11,7 +12,7 @@ http.createServer((req, res) => {
             res.writeHead(200, {
                 'Content-Type': 'text/plain'
             });
-            res.write("Primas logs");
+            res.write(`Logs for ${location}`);
             res.write(logs);
             res.end();
         })
@@ -19,7 +20,7 @@ http.createServer((req, res) => {
             res.writeHead(500, {
                 'Content-Type': 'text/plain'
             });
-            res.write("Primas errs");
+            rres.write(`Errors for ${location}`);
             res.write(err);
             res.end();
         });
@@ -30,11 +31,11 @@ var printLogPromise = new Promise((resolve, reject) => {
         allErrors = '';
     child = spawn('powershell.exe', [`cd ${location}; ${command}`]);
     child.stdout.on('data', data => {
-        allLogs += `Powershell Data: ${data}`;
+        allLogs += `Logs Data: ${data} ${newLineDevider}`;
     });
 
     child.stderr.on('data', data => {
-        allErrors += `Powershell Errors: ${data}`;
+        allErrors += `Logs Errors: ${data} ${newLineDevider}`;
     });
 
     child.on('exit', () => {
