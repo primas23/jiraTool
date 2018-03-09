@@ -1,19 +1,15 @@
 const http = require('http');
+
 let logReader = require('./utils/logsReader.js');
 const constants = require('./common/constants.js');
+let requestHandlers = require('./common/requestHandlers.js');
 
 http.createServer((req, res) => {
     logReader
         .then((logs) => {
-            res.writeHead(200, constants.contentTypeText);
-            res.write(`Logs for ${constants.location}`);
-            res.write(logs);
-            res.end();
+            requestHandlers.logRequestHandler(res, logs);
         })
         .catch((err) => {
-            res.writeHead(500, constants.contentTypeText);
-            res.write(`Errors for ${constants.location}`);
-            res.write(err);
-            res.end();
+            requestHandlers.errorRequestHandler(res, err);
         });
 }).listen(constants.port);
