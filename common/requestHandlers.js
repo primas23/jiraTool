@@ -1,14 +1,14 @@
 const constants = require('./constants.js');
 
 function logRequestHandler(res, logs) {
-    res.writeHead(200, constants.contentTypeText);
+    res.writeHead(constants.successStatus, constants.contentTypeText);
     res.write(`Logs for ${constants.location}`);
     res.write(logs);
     res.end();
 }
 
 function errorRequestHandler(res, err) {
-    res.writeHead(500, constants.contentTypeText);
+    res.writeHead(constants.serverErrorStatus, constants.contentTypeText);
     res.write(`Errors for ${constants.location}`);
     res.write(err);
     res.end();
@@ -17,4 +17,4 @@ function errorRequestHandler(res, err) {
 module.exports = {
     logRequestHandler: logRequestHandler,
     errorRequestHandler: errorRequestHandler,
-}
+};

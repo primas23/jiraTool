@@ -3,5 +3,7 @@ module.exports = {
     location: 'D:\\development\\cobuilder-gobim',
     newLineDevider: '\r\n',
     port: '2205',
-    contentTypeText: { 'Content-Type': 'text/plain' }
+    contentTypeText: { 'Content-Type': 'text/plain' },
+    successStatus: 200,
+    serverErrorStatus: 500
 };
