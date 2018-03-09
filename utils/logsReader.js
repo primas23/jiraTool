@@ -1,4 +1,4 @@
-let constants = require('../common/constants.js');
+const constants = require('../common/constants.js');
 let spawn = require('child_process').spawn,
     child;
 

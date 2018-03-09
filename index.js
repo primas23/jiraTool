@@ -1,6 +1,6 @@
 const http = require('http');
 let logReader = require('./utils/logsReader.js');
-let constants = require('./common/constants.js');
+const constants = require('./common/constants.js');
 
 http.createServer((req, res) => {
     logReader
