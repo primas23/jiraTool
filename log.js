@@ -2,7 +2,7 @@ let spawn = require('child_process').spawn,
   child;
 
 const command = 'git log --pretty=format:"%ce;%s;%ad" --date=short';
-const location = 'D:\\development\\FileCacheService';
+const location = 'D:\\development\\cobuilder-gobim';
 
 child = spawn('powershell.exe', [`cd ${location}; ${command}`]);
 child.stdout.on('data', data => {
