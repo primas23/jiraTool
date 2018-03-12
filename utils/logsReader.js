@@ -1,11 +1,12 @@
-const constants = require('../common/constants.js');
+const constants = require('../common/constants');
+const config = require('../common/config');
 let spawn = require('child_process').spawn,
     child;
 
 let logReader = new Promise((resolve, reject) => {
     let allLogs = '',
         allErrors = '';
-    child = spawn('powershell.exe', [`cd ${constants.location}; ${constants.command}`]);
+    child = spawn('powershell.exe', [`cd ${config.location}; ${constants.command}`]);
     child.stdout.on('data', data => {
         allLogs += `Logs Data: ${data} ${constants.newLineDevider}`;
     });
