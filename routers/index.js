@@ -4,7 +4,7 @@ let router = express.Router();
 
 module.exports = (app) => {
     router
-        .get('/', gitLogController.getAll);
+        .get('/gitlogs', gitLogController.getAll);
 
-    app.use('/gitLogs', router);
+    app.use('/api', router);
 };
